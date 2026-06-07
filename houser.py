@@ -7,9 +7,7 @@ import seaborn as sns
 import os
 
 from preprocess import get_subsampled_edge_indexes_with_ratings_and_neg_edges
-from typesafety import EdgeData, get_houser_weights_filepath, get_weights_filepath, ModelType, PredType, HouserType
-from link_prediction.autorun import autorun as autorun_lp
-from edge_classification.autorun import autorun as autorun_ec
+from typesafety import EdgeData, get_weights_filepath, ModelType, PredType, HouserType
 from learn_alpha import train as learn_alpha
 from link_prediction.models.gnn import GCN as lpGCN, run as run_lp
 from edge_classification.models.gnn import GCN as ecGCN, run as run_ec
@@ -97,18 +95,7 @@ model_metrics = {
 }
 
 k = 10
-
-
 alpha = learn_alpha(train_edges=train_edges, test_edges=test_edges, train_labels=train_labels, test_labels=test_labels, lp_gnn=lp_gcn, ec_gnn=ec_gcn)
-
-# weights_filepath = get_houser_weights_filepath(subsampling_percent=edge_data.subsampling_percent, training_split=edge_data.train_ratio)
-# model = CombinationModel()
-
-# if not os.path.exists(weights_filepath):
-#     train(edge_data=edge_data, train_edges=train_edges, train_labels=train_labels, 
-#           test_edges=test_edges, test_labels=test_labels, lp_gnn=lp_gcn, ec_gnn=ec_gcn)
-    
-# model.load_state_dict(torch.load(weights_filepath, weights_only=False))
 
 with torch.no_grad():
     users = torch.unique(test_edges[0])
@@ -128,7 +115,6 @@ with torch.no_grad():
 
         # Get relevant items in the test set
         relevant_items = set(test_edges[1][(test_edges[0] == user) & (test_labels == 1)].tolist())
-
 
         for model in model_metrics.keys():
 

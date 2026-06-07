@@ -51,10 +51,3 @@ def autorun(edge_data:EdgeData, gnn_only:bool=False):
         print("Results are shown in command line and graphs are in metrics/edge_classification.png folder")
 
     return model
-'''
-Pytorch
-Pytorch-geometric
-Amazon-dataset
-Typical Recommender systems
-https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/
-'''

@@ -7,8 +7,6 @@ from link_prediction.models.mf import run as run_mf
 from link_prediction.models.gnn import run as run_gnn
 from typesafety import EdgeData
 
-# THIS MUST BE RUN FROM LINK_PREDICTION DIRECTORY
-
 def autorun(edge_data:EdgeData, gnn_only:bool=False):
     print('\nWe run a total of three models to handle the task of Link Prediction\n')
 
@@ -51,10 +49,3 @@ def autorun(edge_data:EdgeData, gnn_only:bool=False):
         print("Results are shown in command line and graphs are in metrics/link_prediction.png folder")
 
     return gnn_metrics, gnn_model
-'''
-Pytorch
-Pytorch-geometric
-Amazon-dataset
-Typical Recommender systems
-https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/
-'''

@@ -1,4 +1,3 @@
-from typing import Tuple
 import torch
 from enum import Enum
 
@@ -192,15 +191,3 @@ def get_weights_filepath(pred_type:PredType, model_type:ModelType, subsampling_p
         extension = '.json'
     pad = '' if heuristic_type == HeuristicType.NONE else '_'
     return f'{pred_type.value}/models/weights/{model_type.value}{pad}{f"{heuristic_type.value}"}_sub_{int(subsampling_percent*100)}_train_rat_{int(training_split * 100)}{extension}'
-
-def get_houser_weights_filepath(subsampling_percent:float, training_split:float) -> str:
-    """
-    Returns the path to the weights file for the given model type.
-
-    Args:
-        model_type (ModelTypes): The type of model (GNN, MF, or HEURISTIC).
-
-    Returns:
-        str: The path to the weights file.
-    """
-    return f'weights/houser_sub_{int(subsampling_percent*100)}_train_rat_{int(training_split * 100)}.pth'

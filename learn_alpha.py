@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 from tqdm import tqdm
-from typesafety import EdgeData, get_houser_weights_filepath, HouserDataset
+from typesafety import HouserDataset
 from helpers import normalize
 from link_prediction.models.gnn import GCN as lpGCN
 from edge_classification.models.gnn import GCN as ecGCN

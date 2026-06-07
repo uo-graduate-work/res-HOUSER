@@ -162,9 +162,6 @@ def run(edge_data:EdgeData):
                 # Evaluate loss
                 loss = criterion(outputs, truths)
                 test_loss += loss.item()
-                # Backpropagation and parameter updates
-                loss.backward()
-                optimizer.step()
 
             # Early stopping logic
             if test_loss < best_test_loss:
